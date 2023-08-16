@@ -5,14 +5,27 @@ import java.util.List;
 
 public class MergeTwoArr {
 
-    public static List<Comparable> merge(ArrayList<Comparable> arrA, ArrayList<Comparable> arrB, boolean sort) {
+    private static List<Comparable> arrOut = new ArrayList<>();
 
-        List<Comparable> arrC = new ArrayList<>(arrA.size() + arrB.size());
+    public static List<Comparable> merge(boolean sort, ArrayList<ArrayList<Comparable>>arraysIn) {
+
+        if (arraysIn.size() == 0) {
+            return arrOut;
+        }
+
+        ArrayList<Comparable> arrA;
+        ArrayList<Comparable> arrB;
         int posA = 0;
         int posB = 0;
-        Comparable tmpPosA = 0;
-        Comparable tmpPosB = 0;
-        Comparable tmpPosC = 0;
+        Comparable tmpPosA;
+        Comparable tmpPosB;
+        Comparable tmpPosC;
+        int lengthOutArr;
+
+        lengthOutArr = arraysIn.get(0).size() + arrOut.size();
+        List<Comparable> arrC = new ArrayList<>(lengthOutArr);
+        arrA = (ArrayList<Comparable>) arrOut;
+        arrB = arraysIn.remove(0);
 
         for (int i = 0; i < arrC.size(); i++) {
             tmpPosA = arrA.get(i - posA);
@@ -71,15 +84,6 @@ public class MergeTwoArr {
                 }
             }
         }
-        return arrC;
-    }
-
-    public static ArrayList<Comparable> ddd(boolean sort, ArrayList<Comparable> ... arrayLists) {
-        int lengthOutArr = 0;
-        for (int i = 0; i < arrayLists.length; i++) {
-            lengthOutArr += arrayLists[i].size();
-        }
-        List<Comparable> arrC = new ArrayList<>(lengthOutArr);
-        return null;
+        return merge(sort, arraysIn);
     }
 }
