@@ -4,35 +4,51 @@ import com.krauze.utils.MergeTwoArr;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MergeSort {
     public static void main(String[] args) {
-        File outFile = null;
-        List<String> inFiles = new ArrayList<>();
-        boolean type = false;
-        boolean sort = true;
+        List<Comparable> out = new ArrayList<>();
+        ArrayList<ArrayList<Comparable>> in = new ArrayList<>();
+        ArrayList<Comparable> one = new ArrayList<>();
+        ArrayList<Comparable> two = new ArrayList<>();
+        ArrayList<Comparable> tree = new ArrayList<>();
+        one.addAll(Arrays.asList(1,2,8,4,5,56));
+        two.addAll(Arrays.asList(4,5,10,7,8));
+        tree.addAll(Arrays.asList(4,5,10,7,11));
+        in.add(one);
+        in.add(two);
+        in.add(tree);
 
-        if (args.length == 0) {
-            System.out.println("Не заданы входные данные!");
-            return;
-        }
+        out = MergeTwoArr.merge(true, in);
 
-        for (int i = 0; i < args.length; i++) {
-            switch (args[i]) {
-                case "-a" -> sort = true;//  up
-                case "-d" -> sort = false;// down
-                case "-i" -> type = false;// int
-                case "-s" -> type = true;//  String
-                default -> {
-                    if (outFile == null) {
-                        outFile = new File(args[i]);
-                    } else {
-                        inFiles.add(args[i]);
-                    }
-                }
-            }
-        }
+        System.out.println(out);
+//        File outFile = null;
+//        List<String> inFiles = new ArrayList<>();
+//        boolean type = false;
+//        boolean sort = true;
+//
+//        if (args.length == 0) {
+//            System.out.println("Не заданы входные данные!");
+//            return;
+//        }
+//
+//        for (int i = 0; i < args.length; i++) {
+//            switch (args[i]) {
+//                case "-a" -> sort = true;//  up
+//                case "-d" -> sort = false;// down
+//                case "-i" -> type = false;// int
+//                case "-s" -> type = true;//  String
+//                default -> {
+//                    if (outFile == null) {
+//                        outFile = new File(args[i]);
+//                    } else {
+//                        inFiles.add(args[i]);
+//                    }
+//                }
+//            }
+//        }
     }
 
 
